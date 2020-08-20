@@ -2,9 +2,7 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">
-        wonderland
-      </h1>
+      <h1 class="title">{{ name }}</h1>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -28,9 +26,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, ref } from '@nuxtjs/composition-api'
 
-export default Vue.extend({})
+export default defineComponent({
+  setup() {
+    const name = ref('wonderland')
+
+    return { name }
+  },
+})
 </script>
 
 <style>

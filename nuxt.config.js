@@ -47,6 +47,7 @@ export default {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/composition-api',
   ],
   /*
    ** Nuxt.js modules
@@ -65,4 +66,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  generate: {
+    interval: 2000,
+  },
 }
