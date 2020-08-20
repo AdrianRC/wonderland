@@ -26,11 +26,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { useQuery } from '@vue/apollo-composable'
+import gql from 'graphql-tag'
 
 export default defineComponent({
   setup() {
-    const name = ref('wonderland')
+    const { result } = useQuery(gql`
+      {
+        shop {
+          name
+          primaryDomain {
+            url
+            host
+          }
+        }
+      }
+    `)
+    const name = computed(() => result.value?.shop?.name)
 
     return { name }
   },

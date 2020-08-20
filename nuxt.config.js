@@ -34,7 +34,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['@/plugins/apollo.ts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -55,6 +55,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/apollo',
   ],
   /*
    ** Axios module configuration
@@ -68,5 +69,20 @@ export default {
   build: {},
   generate: {
     interval: 2000,
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint:
+          'https://wonderland-x-adrian.myshopify.com/api/2019-07/graphql.json',
+        httpLinkOptions: {
+          headers: {
+            'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_TOKEN,
+            Accept: 'application/json',
+          },
+        },
+      },
+    },
   },
 }
