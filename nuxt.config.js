@@ -56,6 +56,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
+    'nuxt-i18n',
   ],
   /*
    ** Axios module configuration
@@ -81,6 +82,49 @@ export default {
             'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_TOKEN,
             Accept: 'application/json',
           },
+        },
+      },
+    },
+  },
+
+  i18n: {
+    locales: [
+      {
+        code: 'nl',
+        iso: 'nl-NL',
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+      },
+    ],
+    defaultLocale: 'nl',
+    fallbackLocale: 'en',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: false,
+    vueI18n: {
+      numberFormats: {
+        en: {
+          currency: {
+            style: 'currency',
+            currency: 'USD',
+          },
+        },
+        nl: {
+          currency: {
+            style: 'currency',
+            currency: 'EUR',
+          },
+        },
+      },
+      messages: {
+        nl: {
+          english: 'Engelse',
+          dutch: 'Nederlands',
+        },
+        en: {
+          english: 'English',
+          dutch: 'Dutch',
         },
       },
     },
