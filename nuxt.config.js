@@ -126,10 +126,14 @@ export default {
         nl: {
           english: 'Engelse',
           dutch: 'Nederlands',
+          collections: 'Collecties',
+          home: 'Home',
         },
         en: {
           english: 'English',
           dutch: 'Dutch',
+          collections: 'Collections',
+          home: 'Home',
         },
       },
     },
