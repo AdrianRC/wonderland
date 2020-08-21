@@ -11,7 +11,11 @@
     <div
       class="grid grid-cols-1 gap-12 px-2 py-4 sm:grid-cols-2 sm:py-8 md:py-10 lg:grid-cols-3 lg:px-12 lg:py-14 lg:gap-x-16"
     >
-      <div v-for="collection in collections" :key="collection.handle">
+      <div
+        v-for="collection in collections"
+        :key="collection.handle"
+        class="space-y-4"
+      >
         <img
           :src="collection.image.transformedSrc"
           :alt="collection.image.altText"
