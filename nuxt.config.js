@@ -34,7 +34,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/apollo.ts'],
+  plugins: ['@/plugins/apollo.ts', '@/plugins/geolocation.client.ts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -70,6 +70,11 @@ export default {
   build: {},
   generate: {
     interval: 2000,
+  },
+
+  publicRuntimeConfig: {
+    shopifyToken: process.env.SHOPIFY_TOKEN,
+    ipToken: process.env.IP_TOKEN,
   },
 
   apollo: {
