@@ -20,6 +20,6 @@ export default ({ app, $config }: Context) => {
       }
     })
     .catch((err: string) => {
-      throw new Error(err)
+      console.error(err)
     })
 }
