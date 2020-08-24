@@ -7,10 +7,14 @@ export const localeCurrencyMap = {
   nl: 'EUR',
 }
 
-export function getMinPrice(minPriceArray: Price[], locale: 'en' | 'nl') {
+export function getPrice(minPriceArray: Price[], locale: 'en' | 'nl') {
   const price = minPriceArray.find(
     (price) => price.currencyCode === localeCurrencyMap[locale]
   )
+  if (price) return addTax(price)
+}
+
+export function addTax(price: Price) {
   if (price?.currencyCode === 'EUR') {
     return price.amount * VAT_TAX
   }

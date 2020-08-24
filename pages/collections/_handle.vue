@@ -27,7 +27,7 @@
                 {{ product.title }}
               </h2>
               <span class="text-sm text-gray-600">{{
-                $n(getMinPrice(product.minPrices, $i18n.locale), 'currency')
+                $n(getPrice(product.minPrices, $i18n.locale), 'currency')
               }}</span>
             </div>
             <p class="leading-snug text-gray-700">{{ product.description }}</p>
@@ -49,13 +49,13 @@
 <script lang="ts">
 import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import useCollection from '@/composables/useCollection'
-import { getMinPrice } from '@/utils/currency'
+import { getPrice } from '@/utils/currency'
 
 export default defineComponent({
   setup() {
     const { params } = useContext()
     const { products, title } = useCollection(params.value.handle)
-    return { products, title, getMinPrice }
+    return { products, title, getPrice }
   },
 })
 </script>
