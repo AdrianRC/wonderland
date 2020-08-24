@@ -57,6 +57,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
     'nuxt-i18n',
+    '@nuxtjs/toast',
   ],
   /*
    ** Axios module configuration
@@ -139,5 +140,11 @@ export default {
         },
       },
     },
+  },
+
+  toast: {
+    position: 'bottom-center',
+    theme: 'outline',
+    duration: 2000,
   },
 }

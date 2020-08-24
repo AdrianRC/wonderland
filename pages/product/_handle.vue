@@ -61,7 +61,8 @@
               class="w-1/2 px-4 py-2 border border-gray-400"
             />
             <button
-              class="w-1/2 text-sm font-semibold text-white uppercase bg-black"
+              @click="addToCart"
+              class="w-1/2 text-sm font-semibold text-white uppercase transition duration-300 bg-black border-2 border-black hover:bg-white hover:text-black"
             >
               Add to cart
             </button>
@@ -108,7 +109,10 @@ export default defineComponent({
       }
     })
 
-    return { product, selected, getPrice, selectedCount }
+    const addToCart = () =>
+      app.$toast.show(`🛒 ${selected?.value?.title} added to the cart!`)
+
+    return { product, selected, getPrice, selectedCount, addToCart }
   },
 })
 </script>
