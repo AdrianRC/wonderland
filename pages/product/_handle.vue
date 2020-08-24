@@ -52,7 +52,7 @@
           </p>
           <div class="flex self-end">
             <input
-              v-model="selectedCount"
+              v-model.number="selectedCount"
               aria-label="amount"
               type="number"
               max="10"
@@ -61,10 +61,10 @@
               class="w-1/2 px-4 py-2 border border-gray-400"
             />
             <button
-              @click="addToCart"
               class="w-1/2 text-sm font-semibold text-white uppercase transition duration-300 bg-black border-2 border-black hover:bg-white hover:text-black"
+              @click.stop.prevent="addToCart"
             >
-              Add to cart
+              {{ $t('addToCart') }}
             </button>
           </div>
         </div>
@@ -82,6 +82,7 @@ import {
   ref,
 } from '@nuxtjs/composition-api'
 import useProduct, { Variant } from '@/composables/useProduct'
+import { addItem } from '@/composables/useCart'
 import { getPrice } from '@/utils/currency'
 
 export default defineComponent({
@@ -109,8 +110,12 @@ export default defineComponent({
       }
     })
 
-    const addToCart = () =>
-      app.$toast.show(`🛒 ${selected?.value?.title} added to the cart!`)
+    const addToCart = () => {
+      if (selected.value) {
+        addItem(selected.value, selectedCount.value)
+        app.$toast.show(`🛒 ${selected?.value?.title} added to the cart!`)
+      }
+    }
 
     return { product, selected, getPrice, selectedCount, addToCart }
   },
